@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produit - Mon Site Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            margin-right: auto;
+            font-weight: 600;
+        }
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .nav-item {
+            margin-right: 10px;
+        }
+        .nav-item a:hover {
+            color: #007bff;
+        }
+        .nav-link {
+            color: #4e04bd;
+            font-weight: 500;
+        }
+        .hero-section-small {
+            position: relative;
+            overflow: hidden;
+            height: 300px; /* Ajustez la hauteur selon vos besoins */
+            background-image: url('Service1.jpg'); /* Remplacez par l'URL de votre image si elle est différente */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 80px; /* Pour éviter le chevauchement avec la navbar fixe */
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Assombrir l'image pour la lisibilité du texte */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        .hero-title-small {
+            font-size: 48px; /* Ajustez la taille du texte */
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+        .product-section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #343a40;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .product-image-container {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e9ecef; /* Placeholder background */
+        }
+        .product-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .product-details {
+            padding: 20px;
+            text-align: center;
+        }
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+        .product-description {
+            font-size: 16px;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin-bottom: 30px;
+            width: 250px;
+        }
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+        .contact-info {
+            font-style: normal;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #bdc3c7;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: #ffffff;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #007bff;
+        }
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Really Congo" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apropos.html">Apropos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="produit.html">Produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="realisation.html">Réalisation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="avis-clients.html">Avis Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section-small">
+        <div class="hero-overlay">
+            <h1 class="hero-title-small">Nos Services</h1>
+        </div>
+    </header>
+
+    <div class="product-section container">
+        <h2 class="section-title">Nos Services</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="desinfection.png" alt="Produit 1" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">désinfection</h3>
+                    <p class="product-description">D🧼 Service de Désinfection Professionnelle Protégez votre santé et celle de vos proches !</p>
+                        
+                        Chez Really Congo, nous proposons un service complet de désinfection pour éliminer les bactéries, virus et micro-organismes présents dans vos espaces de vie ou de travail. 🦠💥</p>
+                        
+                        Nous intervenons dans :
+                        🏠 Maisons & appartements</p>
+                        🏢 Bureaux & entreprises</p>
+                        🏫 Écoles & institutions</p>
+                        🚐 Véhicules de transport</p>
+                        🛒 Commerces & entrepôts</p>
+                        
+                    <p>Nos atouts :</p>
+                        <p>  🔬 Produits certifiés et conformes aux normes sanitaires</p>
+                        <p>👨‍🔬 Équipe formée et expérimentée</p>
+                        <p>⚡ Intervention rapide & efficace</p>
+                        <p>🌿 Méthodes respectueuses de l’environnement</p>
+                        
+                        <p><Pourquoi désinfecter ?</p>
+                        <p>✅ Réduire les risques d’infections et de maladies</p>
+                        <p>✅ Créer un environnement sain et sécurisé</p>
+                        <p>✅ Respecter les normes d’hygiène exigées</p>
+                        
+                        
+                    <a href="contact.html" button class="btn btn-primary">Contactez-nous</button></a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="desinsectisation.png" alt="Produit 2" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Désinsectisation</h3>
+                    <p class="product-description">🐜 Service de Désinsectisation
+                        Dites adieu aux insectes envahissants !</p>
+                        
+                    <p>Chez Really Congo, nous sommes spécialisés dans la lutte contre tous les types d'insectes nuisibles :</p>
+                        🪳 Cafards – 🦟 Moustiques – 🕷 Punaises de lit – 🐜 Fourmis – 🪰 Mouches… et bien plus encore !</p>
+                        
+                    <p>Nos interventions couvrent :</p>
+                    <p>   🏠 Habitations privées</p>
+                    <p> 🏢 Bureaux et locaux commerciaux</p>
+                    <p> 🍽 Restaurants et hôtels</p>
+                    <p> 🏫 Établissements publics</p>
+                    <p> 🚛 Véhicules de transport</p>
+                        
+                    <p> Nos engagements :</p>
+                    <p> ✅ Inspection des lieux et identification des nuisibles</p>
+                    <p> 🧴 Utilisation de produits efficaces et certifiés</p>
+                    <p>  👨‍🔬 Équipe formée avec des techniques modernes</p>
+                    <p>  🌿 Traitement respectueux de l’environnement</p>
+                    <p>  📆 Résultats durables et prévention à long terme</p>
+                        
+                    <p> Protégez votre santé et votre environnement !</p>
+                    <p> Faites confiance à Really Congo pour une intervention rapide, sécurisée et garantie. 🔒🌍</p>
+                    <button class="btn btn-primary">Contactez-nous</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="deratisation.png" alt="Produit 3" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Dératisation</h3>
+                    <p class="product-description">🐭 Service de Dératisation
+                        Éliminez les rongeurs, protégez votre environnement !</p>
+                        
+                        Les rats et souris ne sont pas seulement nuisibles… ils sont aussi porteurs de maladies graves. Chez Really Congo, nous offrons un service complet de dératisation pour garantir la sécurité de vos espaces de vie et de travail.
+                        
+                        <p> Nous intervenons dans :</p>
+                        <p> 🏠 Maisons & appartements</p>
+                        <p>   🏢 Bureaux & entrepôts</p>
+                        <p> 🍽 Restaurants & hôtels</p>
+                        <p> 🏫 Écoles & hôpitaux</p>
+                        
+                        <p>  Notre méthode :</p>
+                        <p>   🔍 Inspection minutieuse des lieux</p>
+                        <p>  🧪 Pose de produits professionnels et appâts efficaces</p>
+                        <p>  🛠 Sécurisation des accès (trous, fissures…)</p>
+                        <p>  ♻️ Méthodes respectueuses de l’environnement et sans danger pour vos animaux domestiques</p>
+                        
+                        <p> Pourquoi nous choisir ?</p>
+                        <p>  ✔ Intervention rapide ⚡</p>
+                        <p>   ✔ Résultats durables 🛡</p>
+                        <p>  ✔ Équipe formée et discrète 👨‍🔬</p>
+                        <p>    ✔ Suivi personnalisé 📞</p>
+                        
+                    <p> Faites appel à Really Congo pour une solution fiable, hygiénique et garantie contre les rongeurs. ✅</p>
+                    <button class="btn btn-primary">Voir Détails</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="n1.png" alt="Produit 4" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Nettoyage Voiture</h3>
+                    <p class="product-description">🚗✨ Service de Nettoyage Voiture
+                        Offrez à votre véhicule une propreté impeccable, à l’intérieur comme à l’extérieur !</p>
+                        
+                    <p>Chez Really Congo, nous redonnons éclat et fraîcheur à votre voiture grâce à un nettoyage professionnel, rapide et soigné.</p>
+                        
+                    <p>   Nos prestations incluent :</p>
+                    <p>   🧼 Lavage extérieur complet (carrosserie, jantes, vitres)</p>
+                    <p>  🧽 Nettoyage intérieur (aspiration, plastiques, sièges, tapis)</p>
+                    <p>   🌬 Désinfection et traitement anti-odeurs</p>
+                    <p>   🧴 Utilisation de produits de qualité et sans risque pour les surfaces</p>
+                        
+                    <p>   Nos atouts :</p>
+                    <p>   ✅ Service rapide et soigné ⏱</p>
+                    <p>   ✅ Personnel qualifié 👨‍🔧</p>
+                    <p>   ✅ Formules adaptées à tous les types de véhicules 🚙</p>
+                    <p>   ✅ Prix compétitifs 💵</p>
+                        
+                    <p>  Faites briller votre voiture avec Really Congo — le soin professionnel qu’elle mérite ! 💧🚘</p>
+                    <button class="btn btn-primary">Contactez-nous</button>
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <div class="product-section container">
+        <h2 class="section-title">Nettoyage</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="tapis.png" alt="Produit 1" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">🧼🪄 Service de Nettoyage de Tapis</h3>
+                    <p class="product-description">Redonnez vie à vos tapis grâce à un nettoyage en profondeur !</p>
+
+                        Chez Really Congo, nous prenons soin de vos tapis avec des techniques efficaces pour éliminer la saleté, les taches, les acariens et les mauvaises odeurs.</p>
+                        
+                    <p>Nos services incluent :</p>
+                    <p> 🧽 Aspiration et dépoussiérage en profondeur</p>
+                    <p> 🧴 Lavage à la main ou par injection/extraction selon la matière</p>
+                    <p> 🌿 Traitement antibactérien et anti-acariens</p>
+                    <p> 🌬 Séchage rapide et sans odeurs</p>
+                        
+                    <p> Pourquoi nous choisir ?</p>
+                    <p> ✅ Équipe expérimentée 👷‍♂️</p>
+                    <p> ✅ Produits professionnels et non agressifs 🌱</p>
+                    <p> ✅ Résultats visibles dès le premier nettoyage ✨</p>
+                    <p> ✅ Service à domicile disponible 🏠</p>
+                        
+                    <p> Confiez vos tapis à des experts pour un intérieur propre, sain et élégant ! 🏡🧹</p>
+                        
+                        
+                    <a href="contact.html" button class="btn btn-primary">Contactez-nous</button></a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="canape.png" alt="Produit 2" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">🛋️✨ Service de Nettoyage de Canapé</h3>
+                    <p class="product-description">Rafraîchissez votre salon avec un canapé propre, sain et comme neuf !</p>
+
+                        <p>Chez Really Congo, nous redonnons éclat et confort à vos canapés grâce à un nettoyage en profondeur, adapté à chaque type de tissu ou cuir.</p>
+                        
+                        <p> Nos services incluent :</p>
+                        <p> 🧼 Aspiration complète et dépoussiérage</p>
+                        <p>  🧴 Nettoyage par injection/extraction ou à la vapeur</p>
+                        <p>  🦠 Élimination des taches, acariens et mauvaises odeurs</p>
+                        <p> 🌿 Produits doux et respectueux des matériaux</p>
+                        
+                        <p> Pourquoi nous faire confiance ?</p>
+                        <p>   ✅ Équipe formée et expérimentée 👷‍♀️</p>
+                        <p>  ✅ Résultat immédiat et visible ✨</p>
+                        <p>  ✅ Service à domicile rapide et pratique 🚗</p>
+                        <p> ✅ Soins adaptés à tous types de canapés (tissu, velours, cuir…) 🛋️</p>
+                        
+                        <p> Offrez une seconde vie à votre canapé avec Really Congo ! 🧽💨</p>
+                        
+                    
+                    <button class="btn btn-primary">Contactez-nous</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="batiment.png" alt="Produit 3" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">🧹🏢 Service de Nettoyage de Nouveau Bâtiment</h3>
+                    <p class="product-description">Préparez vos locaux neufs à recevoir avec propreté et éclat !</p>
+
+                    <p> Chez Really Congo, nous assurons le nettoyage complet après construction ou rénovation afin de livrer des espaces impeccables, prêts à l’emploi.</p>
+                        
+                        <p>  Nos prestations incluent :</p>
+                        <p>   🪣 Évacuation des résidus de chantier (poussière, gravats, colle, peinture…)</p>
+                        <p>    🧼 Lavage des sols, vitres, murs et plafonds</p>
+                        <p>   🧽 Désinfection des surfaces</p>
+                        <p>    🚽 Nettoyage des sanitaires et cuisines installées</p>
+                        <p>    🔍 Contrôle qualité avant livraison finale</p>
+                        
+                        <p>   Pourquoi nous choisir ?</p>
+                        <p>   ✅ Respect des délais de livraison ⏱️</p>
+                        <p>   ✅ Matériel professionnel et personnel qualifié 👷</p>
+                        <p>  ✅ Produits puissants et sans danger 👌</p>
+                        <p>   ✅ Service adapté aux bâtiments résidentiels, commerciaux et industriels 🏠🏢🏭</p>
+                        
+                    <p>    Donnez une première impression irréprochable à vos clients ou occupants avec Really Congo ! 🧼🌟</p>
+                        
+
+                    <button class="btn btn-primary">Voir Détails</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-container">
+                    <img src="vitre.png" alt="Produit 4" class="product-image">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">🪟✨ Service de Nettoyage de Vitres</h3>
+                    <p class="product-description">Des vitres éclatantes pour une visibilité parfaite !</p>
+
+                    <p> Chez Really Congo, nous offrons un service spécialisé dans le nettoyage de vitres intérieures et extérieures, pour particuliers, commerces et entreprises.</p>
+                        
+                    <p> Nos points forts :</p>
+                    <p> 🧽 Nettoyage sans traces des vitres, baies vitrées, vitrines, fenêtres hautes</p>
+                    <p> 🚿 Utilisation de produits professionnels pour un résultat éclatant</p>
+                    <p> 🪜 Intervention sécurisée avec équipement adapté (échafaudage, perches télescopiques…)</p>
+                    <p> 🔄 Entretien ponctuel ou régulier selon vos besoins</p>
+                        
+                    <p> Pourquoi nous faire confiance ?</p>
+                    <p> ✅ Rapidité et efficacité</p>
+                    <p> ✅ Résultats brillants et durables</p>
+                    <p> ✅ Respect de votre environnement</p>
+                    <p> ✅ Techniciens formés et expérimentés</p>
+                        
+                    <p> Redonnez clarté et brillance à vos vitres avec Really Congo ! 🌞🧼</p>
+                        
+
+                    <button class="btn btn-primary">Contactez-nous</button>
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Suivez Liens</h3>
+                <ul>
+                    <li><a href="index.html#home">Accueil</a></li>
+                    <li><a href="apropos.html">Apropos</a></li>
+                    <li><a href="produit.html">Produit</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="realisation.html">Réalisation</a></li>
+                    <li><a href="avis-clients.html">Avis Clients</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Autres Liens</h3>
+                <ul>
+                    <li><a href="#">Poser Une Question</a></li>
+                    <li><a href="#">Apropos De Nous</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="contact-info">
+                    <p>+242 00 993 03 85</p>
+                    <p>+243 868 259172</p>
+                    <p>gracelukosi15@gmail.com</p>
+                    <p>Av. De L'OUA Kinshasa C/Ngaliema</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-Nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created By Mr. Grace Lukasi | All Rights Reserved !</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réalisations - Mon Site Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            margin-right: auto;
+            font-weight: 600;
+        }
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .nav-item {
+            margin-right: 10px;
+        }
+        .nav-item a:hover {
+            color: #007bff;
+        }
+        .nav-link {
+            color: #4e04bd;
+            font-weight: 500;
+        }
+        .hero-section-small {
+            position: relative;
+            overflow: hidden;
+            height: 300px; /* Ajustez la hauteur selon vos besoins */
+            background-image: url('Service1.jpg'); /* Remplacez par l'URL de votre image si elle est différente */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 80px; /* Pour éviter le chevauchement avec la navbar fixe */
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Assombrir l'image pour la lisibilité du texte */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        .hero-title-small {
+            font-size: 48px; /* Ajustez la taille du texte */
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+        .realisations-section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #343a40;
+        }
+        .realisation-group {
+            margin-bottom: 40px;
+        }
+        .realisations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .realisation-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .realisation-image-container {
+            height: 150px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #e9ecef; /* Placeholder background */
+        }
+        .realisation-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .realisation-details {
+            padding: 15px;
+            text-align: center;
+        }
+        .realisation-description {
+            font-size: 14px;
+            color: #6c757d;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin-bottom: 30px;
+            width: 250px;
+        }
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+        .contact-info {
+            font-style: normal;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #bdc3c7;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: #ffffff;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #007bff;
+        }
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Really Congo" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apropos.html">Apropos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produit.html">Produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="realisation.html">Réalisation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="avis-clients.html">Avis Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section-small">
+        <div class="hero-overlay">
+            <h1 class="hero-title-small">Nos Réalisations</h1>
+        </div>
+    </header>
+
+    <div class="realisations-section container">
+        <h2 class="section-title">Nos Réalisations</h2>
+        <div class="realisation-group">
+            <div class="realisations-grid">
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="real1.png" alt="Réalisation 1" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description"> Desinfection à l Aeroport de Kinshasa.</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="real2.png" alt="Réalisation 2" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Desinfection à l Aeroport de Kinshasa</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="real3.png" alt="Réalisation 3" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Desinfection à l Aeroport de Kinshasa</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="Real4.png" alt="Réalisation 4" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Desinfection à l Aeroport de Kinshasa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="realisation-group">
+            <div class="realisations-grid">
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation2_1.jpg" alt="Réalisation 5" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Lorem ipsum dolor sit amet...</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation2_2.jpg" alt="Réalisation 6" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Quis ipsum suspendisse...</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation2_3.jpg" alt="Réalisation 7" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Lorem ipsum dolor sit amet...</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation2_4.jpg" alt="Réalisation 8" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Quis ipsum suspendisse...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="realisation-group">
+            <div class="realisations-grid">
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation3_1.jpg" alt="Réalisation 9" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Lorem ipsum dolor sit amet...</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation3_2.jpg" alt="Réalisation 10" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Quis ipsum suspendisse...</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation3_3.jpg" alt="Réalisation 11" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Lorem ipsum dolor sit amet...</p>
+                    </div>
+                </div>
+                <div class="realisation-card">
+                    <div class="realisation-image-container">
+                        <img src="realisation3_4.jpg" alt="Réalisation 12" class="realisation-image">
+                    </div>
+                    <div class="realisation-details">
+                        <p class="realisation-description">Quis ipsum suspendisse...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Suivez Liens</h3>
+                <ul>
+                    <li><a href="index.html#home">Accueil</a></li>
+                    <li><a href="apropos.html">Apropos</a></li>
+                    <li><a href="produit.html">Produit</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="realisation.html">Réalisation</a></li>
+                    <li><a href="avis-clients.html">Avis Clients</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Autres Liens</h3>
+                <ul>
+                    <li><a href="#">Poser Une Question</a></li>
+                    <li><a href="#">Apropos De Nous</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="contact-info">
+                    <p>+242 00 993 03 85</p>
+                    <p>+243 868 259172</p>
+                    <p>gracelukosi15@gmail.com</p>
+                    <p>Av. De L'OUA Kinshasa</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-Nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created By Mr. Grace Lukasi | All Rights Reserved !</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+</body>
+</html>

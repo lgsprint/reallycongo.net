@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis Clients - Mon Site Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+      .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            margin-right: auto;
+            font-weight: 600;
+        }
+        .navbar-nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .nav-item {
+            margin-right: 10px;
+        }
+        .nav-item a:hover {
+            color: #007bff;
+        }
+        .nav-link {
+            color: #4e04bd;
+            font-weight: 500;
+        }
+        .hero-section-small {
+            position: relative;
+            overflow: hidden;
+            height: 300px; /* Ajustez la hauteur selon vos besoins */
+            background-image: url('Service1.jpg'); /* Remplacez par l'URL de votre image si elle est différente */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            text-align: center;
+            margin-top: 80px; /* Pour éviter le chevauchement avec la navbar fixe */
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Assombrir l'image pour la lisibilité du texte */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        .hero-title-small {
+            font-size: 48px; /* Ajustez la taille du texte */
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            z-index: 2;
+        }
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #343a40;
+        }
+        .testimonial-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        .testimonial-card blockquote {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            border-left: 5px solid #007bff;
+            padding-left: 20px;
+            font-style: italic;
+        }
+        .testimonial-card .author {
+            font-size: 16px;
+            font-weight: 600;
+            color: #343a40;
+            text-align: right;
+        }
+        .testimonial-card .author .fa-star {
+            color: gold;
+            margin-left: 5px;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin-bottom: 30px;
+            width: 250px;
+        }
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+        .contact-info {
+            font-style: normal;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #bdc3c7;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: #ffffff;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #007bff;
+        }
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="Really Congo" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apropos.html">Apropos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produit.html">Produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="realisation.html">Réalisation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="avis-clients.html">Avis Clients</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section-small">
+        <div class="hero-overlay">
+            <h1 class="hero-title-small">Avis de nos clients</h1>
+        </div>
+    </header>
+
+    <div class="testimonials-section container">
+        <h2 class="section-title">Ce que nos clients disent</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <blockquote>
+                        Service exceptionnel ! L'équipe a été très professionnelle et efficace. Je suis très satisfait du résultat.
+                    </blockquote>
+                    <p class="author">Jean-Pierre <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <blockquote>
+                        Très bonne expérience avec cette entreprise. Ils ont su répondre à mes besoins rapidement et avec beaucoup de professionnalisme. Je recommande vivement.
+                    </blockquote>
+                    <p class="author">Marie-Claire <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <blockquote>
+                        Un service de qualité à un prix raisonnable. Je suis impressionné par leur souci du détail et leur engagement envers la satisfaction du client.
+                    </blockquote>
+                    <p class="author">David <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <blockquote>
+                        J'ai fait appel à leurs services à plusieurs reprises et je n'ai jamais été déçu. Fiable, efficace et toujours aimable. Merci !
+                    </blockquote>
+                    <p class="author">Sophie <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></p>
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Suivez Liens</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">Apropos</a></li>
+                    <li><a href="produit.html">Produit</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="realisation.html">Réalisation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Autres Liens</h3>
+                <ul>
+                    <li><a href="contact.html">Poser Une Question</a></li>
+                    <li><a href="apropos.html">Apropos De Nous</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="contact-info">
+                    <p>+242 00 993 03 85</p>
+                    <p>+243 868 259172</p>
+                    <p>gracelukosi15@gmail.com</p>
+                    <p>Av. De L'OUA Kinshasa</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-Nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created By Mr. Grace Lukasi | All Rights Reserved !</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+</body>
+</html>

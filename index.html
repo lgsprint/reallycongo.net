@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Site Web</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .navbar-brand {
+            font-weight: 600;
+        }
+        .nav-link {
+            font-weight: 500;
+        }
+        .nav-item a:hover {
+            color: #007bff;
+        }
+        .hero-section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            height: 600px;
+            background-image: url('headerhome.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+        .hero-description {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .service-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .service-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .project-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .project-img {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .project-details {
+            padding: 20px;
+        }
+        .project-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .contact-form {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .btn-primary {
+            font-weight: 600;
+            padding: 12px 25px;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-section {
+            margin-bottom: 30px;
+            width: 250px;
+        }
+        .footer-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section ul li a:hover {
+            color: #ffffff;
+        }
+        .contact-info {
+            font-style: normal;
+        }
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #bdc3c7;
+        }
+        .social-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .social-links a {
+            color: #ffffff;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #007bff;
+        }
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #34495e;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        /* Styles pour la section Nos Projets */
+        #projects {
+            background-color: #3b76d8; /* Couleur bleue */
+        }
+        #projects h2{
+            color: #ffffff;
+        }
+
+        /* Navbar Fixe */
+        .navbar {
+            position: fixed; /* Fixe la navbar en haut de la page */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Assure que la navbar est au-dessus des autres éléments */
+            background-color: #ffffff; /* Change la couleur de fond de la navbar si nécessaire */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère pour la démarquer */
+        }
+        .navbar-brand {
+            margin-right: auto; /* Pousse le logo à gauche */
+        }
+        .navbar-nav {
+            margin-left: auto; /* Pousse les liens de navigation à droite */
+            display: flex; /* Utilise flexbox pour aligner les éléments */
+            align-items: center; /* Centre verticalement les liens */
+        }
+        .nav-item {
+            margin-right: 10px; /* Ajoute de l'espace entre les liens */
+        }
+        .nav-link {
+            color: #4e04bd; /* Change la couleur du texte des liens si nécessaire */
+        }
+
+        .nav-item a:hover {
+            color: #007bff; /* Change la couleur du texte des liens si quand je met la souris dessus */
+        }
+
+        /* Styles pour la section Apropos */
+        #apropos {
+            padding: 80px 0;
+            text-align: center;
+            
+        }
+        #apropos h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        #apropos p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .apropos-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            font-weight: 600;
+            padding: 12px 25px;
+        }
+
+        /* Styles pour la section Services */
+        #services {
+            padding: 80px 0;
+        }
+        #services .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 16px;
+            color: #555;
+        }
+        .services-content-wrapper {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style pour la section produits */
+        #produits {
+            padding: 80px 0;
+            background-color: #f8f9fa; /* Couleur de fond légèrement grise */
+        }
+
+        #produits .section-title {
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            height: 250px; /* Hauteur fixe pour les images */
+            object-fit: cover; /* Assure que l'image remplit le conteneur, en conservant les proportions */
+            width: 100%;
+            border-radius: 10px 10px 0 0; /* Bords arrondis en haut seulement */
+        }
+
+        .product-details {
+            padding: 20px;
+            text-align: center; /* Centre le texte */
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #34495e; /* Couleur de titre plus foncée */
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: #666; /* Description un peu moins foncée */
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid layout */
+            gap: 20px; /* Espacement entre les cartes */
+        }
+
+        /* Styles pour la section Avis Clients */
+        #avis-clients {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+
+        #avis-clients .section-title {
+            margin-bottom: 40px;
+            text-align: center;
+            color: #343a40;
+        }
+
+        .customer-review {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .review-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-name {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 14px;
+        }
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .review-navigation {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .review-navigation button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #007bff;
+            margin: 0 10px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        .review-navigation button:hover {
+            opacity: 0.7;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo.png" alt="Really Congo" height="30"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="apropos.html">Apropos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produit.html">Produit</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="service.html">Service</a>
+                    </li>
+
+                        <li class="nav-item">
+                        <a class="nav-link" href="realisation.html">Réalisation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="avis-clients.html">Avis Clients</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-section">
+        <div class="container">
+            <h1 class="hero-title fade-in">Bienvenue dans Really Congo</h1>
+            <p class="hero-description fade-in">Vous servir est notre priorite !.</p>
+            <a href="contact.html" class="btn btn-primary btn-lg bounce-in">En savoir plus</a>
+        </div>
+    </header>
+
+    <section id="apropos" class="py-5 ">
+        <div class="container ">
+            <h2 class="section-title">À propos de nous</h2>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <img src="apropos00.jpg" alt="À propos de nous" class="apropos-image">
+                </div>
+                <div class="col-md-6">
+                    <p>Nous sommes une entreprise de multiservices qui consiste à proposer diverses prestations dans des domaines d'activités diversifiés.</p>
+                    <p>Notre objectif est de répondre efficacement et personnellement à tous vos besoins en supports d'impression, en vous offrant toujours le meilleur service du début à la fin de votre projet. Nous sommes très sensibles aux exigences de nos clients, c'est pourquoi nous cherchons toujours la meilleure solution aux impératifs qui se présentent et ce, dans les meilleurs délais.</p>
+                    <p>N'hésitez pas à nous contacter pour tout type de devis, nous vous apporterons conseils et réponses pour l'étude de votre projet.</p>
+                    <a href="apropos.html" class="btn btn-primary">En savoir plus</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="produits" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Nos Produits</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="product1.jpg" alt="Produit 1" class="product-img">
+                    <div class="product-details">
+                        <h3 class="product-title">New ATTAC</h3>
+                        <p class="product-description">New attac efficace en plusieurs taille dont 100ml, 200ml est 500ml.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="product2.jpg" alt="Produit 2" class="product-img">
+                    <div class="product-details">
+                        <h3 class="product-title">Raticide</h3>
+                        <p class="product-description">Effice contre le souris.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="product3.png" alt="Produit 3" class="product-img">
+                    <div class="product-details">
+                        <h3 class="product-title">ATTAC 500ml</h3>
+                        <p class="product-description">ATTAC 500ml avec bouteille pulverisateur.</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">En savoir plus</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Produit 4" class="product-img">
+                    <div class="product-details">
+                        <h3 class="product-title">ATTAC 200ml</h3>
+                        <p class="product-description">Description du produit 4.</p>
+                        <a href="produit.html" class="btn btn-sm btn-outline-primary">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <img src="Service1.jpg" alt="Service 1">
+                    <h3>Nettoyage Usine</h3>
+                    <p>Les agents de nettoyage industriel sont chargés de décontaminer les zones de travail afin de garantir leur sécurité pour les employés . Cela peut inclure le nettoyage des sols, des murs et des surfaces dans les zones où des matières dangereuses sont présentes..</p>
+                </div>
+                <div class="service-card">
+                    <img src="Service2.jpg" alt="Service 2">
+                    <h3>Nettoyage Bureau</h3>
+                    <p>Le vidage des corbeilles à déchets et à papier. Le nettoyage et le dépoussiérage des meubles. Le nettoyage et la désinfection des surfaces telles que les interrupteurs, les poignées de portes et d'armoires, les boutons (d'ascenseur par exemple)</p>
+                </div>
+                <div class="service-card">
+                    <img src="Service3.jpg" alt="Service 3">
+                    <h3>Nettoyage Batiment</h3>
+                    <p> Le nettoyage de bâtiment peut inclure une variété de services tels que le balayage et le lavage des sols, le dépoussiérage des surfaces, le nettoyage des vitres, le vidage des poubelles, le nettoyage des sanitaires, et bien plus encore..</p>
+                </div>
+                <div class="service-card">
+                    <img src="Service4.jpg" alt="Service 4">
+                    <h3>Désinfection ⁠desinsisctisation deratisation</h3>
+                    <p>La désinfection élimine les virus et bactéries sur les surfaces pour prévenir les maladies.
+                        La désinsectisation vise à éliminer les insectes nuisibles comme les cafards, moustiques et punaises.
+                        La dératisation consiste à se débarrasser des rats et souris pour éviter les dégâts et les infections.
+                        Ces services sont essentiels pour assurer un environnement propre, sain et sécurisé..</p>
+                </div>
+            </div>
+            <div class="services-content-wrapper">
+                <a href="#" class="btn btn-primary">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="avis-clients" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Avis de nos Clients</h2>
+            <div class="review-grid">
+                <div class="customer-review">
+                    <p class="review-text">
+                        "Je suis très satisfait de [Nom du Service/Produit]. L'équipe est professionnelle et le résultat a dépassé mes attentes."
+                    </p>
+                    <p class="reviewer-name">Mme. X</p>
+                </div>
+                <div class="customer-review">
+                    <p class="review-text">
+                        "Excellent service ! Rapide, efficace et à un prix raisonnable. Je recommande vivement."
+                    </p>
+                    <p class="reviewer-name">Mr. Y</p>
+                </div>
+                <div class="customer-review">
+                    <p class="review-text">
+                        "Un grand merci pour votre [Nom du Service/Produit]. C'était exactement ce dont j'avais besoin."
+                    </p>
+                    <p class="reviewer-name">Client Z</p>
+                </div>
+            </div>
+            <div class="review-navigation">
+                <button id="prev-review"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-review"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-light py-5">
+        <div class="container">
+            <h2 class="section-title "style="color: #3b76d8;">Notre objectifs</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <img src="objectif1.jpg" alt="Projet 1" class="project-img">
+                        <div class="project-details">
+                            <h3 class="project-title">Really Congo Service</h3>
+                            <p>🧼 À propos de Really Congo
+                                Really Congo est une entreprise congolaise experte en désinfection, dératisation et désinsectisation, engagée pour la protection de la santé publique et la salubrité des espaces de vie et de travail.
+                                
+                                Nous intervenons dans tous types d’environnements (bureaux, maisons, restaurants, entrepôts, hôpitaux, etc.) pour :
+                                
+                                Éliminer les germes et agents pathogènes responsables des maladies grâce à nos services de désinfection professionnelle ;
+                                
+                                Lutter efficacement contre les rongeurs (rats, souris...) avec des solutions de dératisation sûres et durables ;
+                                
+                                Supprimer les insectes nuisibles (cafards, moustiques, fourmis...) via des méthodes de désinsectisation adaptées et respectueuses de l’environnement.
+                                
+                                Notre mission : garantir un cadre de vie sain, prévenir les risques sanitaires, et contribuer activement au bien-être des populations à Kinshasa et partout en RDC</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="project-card">
+                        <img src="objectif2.jpg" alt="Projet 2" class="project-img">
+                        <div class="project-details">
+                            <h3 class="project-title">Vision Really Congo Product</h3>
+                            <p>🧴Vision Really Congo
+                                Really Congo est une entreprise spécialisée dans l’insecticide et la protection de la santé publique.
+                                Notre objectif principal est d’assurer un environnement sain et sécurisé pour tous.
+                                
+                                Nous sommes notamment chargés de :
+                                L’inspection des conditions de sécurité sanitaire dans les établissements de préparation, transformation, transport et restauration ;
+                                
+                                La mise en œuvre de solutions efficaces contre les nuisibles (insectes, rongeurs, etc.) ;
+                                
+                                La désinfection des locaux professionnels et résidentiels ;
+                                
+                                La prévention des risques liés à l’hygiène dans les lieux publics et privés.
+                                
+                                Notre expertise garantit des interventions rapides, conformes aux normes sanitaires, pour protéger durablement votre santé et celle de vos clients..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom:</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Suivez Liens</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">Apropos</a></li>
+                    <li><a href="produit.html">Produit</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="realisation.html">Réalisation</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Autres Liens</h3>
+                <ul>
+                    <li><a href="contact.html">Poser Une Question</a></li>
+                    <li><a href="apropos.html">Apropos De Nous</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms Of Use</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <div class="contact-info">
+                    <p>+242 00 993 03 85</p>
+                    <p>+243 868 259172</p>
+                    <p>gracelukosi15@gmail.com</p>
+                    <p>Av. De L'OUA Kinshasa</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Suivez-Nous</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Created By Mr. Grace Lukasi | All Rights Reserved !</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+</body>
+</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js"></script>
+    <script>
+        // Fonction pour ajouter la classe 'show' après un délai
+        function showElementWithDelay(element, delay) {
+            setTimeout(() => {
+                element.classList.add('show');
+            }, delay);
+        }
+
+        // Sélection des éléments à animer
+        const heroTitle = document.querySelector('.hero-title');
+        const heroDescription = document.querySelector('.hero-description');
+        const serviceCards = document.querySelectorAll('.service-card');
+        const contactButton = document.querySelector('.bounce-in');
+
+        // Appliquer les animations avec des délais
+        showElementWithDelay(heroTitle, 500);
+        showElementWithDelay(heroDescription, 1000);
+        serviceCards.forEach((card, index) => {
+            showElementWithDelay(card, index * 300 + 1500);
+        });
+        showElementWithDelay(contactButton, 2000);
+
+        // Gestion du carrousel d'avis
+        const reviews = document.querySelectorAll('.customer-review');
+        let currentReview = 0;f
+
+        function showReview(index) {
+            reviews.forEach((review, i) => {
+                review.style.display = i === index ? 'block' : 'none';
+            });
+        }
+
+        function nextReview() {
+            currentReview = (currentReview + 1) % reviews.length;
+            showReview(currentReview);
+        }
+
+        function prevReview() {
+            currentReview = (currentReview - 1 + reviews.length) % reviews.length;
+            showReview(currentReview);
+        }
+
+        document.getElementById('next-review').addEventListener('click', nextReview);
+        document.getElementById('prev-review').addEventListener('click', prevReview);
+
+        showReview(currentReview); // Montre le premier avis au chargement de la page
+
+    </script>
+</body>
+</html>
